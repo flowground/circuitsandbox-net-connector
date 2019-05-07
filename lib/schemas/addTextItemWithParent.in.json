@@ -1,0 +1,43 @@
+{
+    "type": "object",
+    "properties": {
+        "convId": {
+            "required": true,
+            "type": "string",
+            "maxLength": 2048
+        },
+        "itemId": {
+            "required": true,
+            "type": "string",
+            "maxLength": 2048
+        },
+        "requestBody": {
+            "type": "object",
+            "properties": {
+                "content": {
+                    "description": "The actual content of the item",
+                    "type": "string",
+                    "maxLength": 16384
+                },
+                "attachments": {
+                    "description": "not available",
+                    "type": "array",
+                    "items": {
+                        "maxLength": 4096,
+                        "type": "string"
+                    }
+                },
+                "subject": {
+                    "description": "The subject (headline) of the new text item",
+                    "type": "string",
+                    "maxLength": 255
+                },
+                "formMetaData": {
+                    "description": "not available",
+                    "type": "string",
+                    "maxLength": 32768
+                }
+            }
+        }
+    }
+}

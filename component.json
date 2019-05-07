@@ -1,0 +1,1238 @@
+{
+    "title": "REST API Version 2",
+    "description": "Circuit REST API to interact with the Circuit system.\n\n[Learn more about the Circuit Development Community](https://www.circuit.com/web/developers/home)",
+    "docsUrl": "",
+    "url": "https://api.apis.guru/v2/specs/circuitsandbox.net/2.9.125/swagger.json",
+    "envVars": {
+        "OAUTH_CLIENT_ID": {
+            "description": "OAuth Client ID"
+        },
+        "OAUTH_CLIENT_SECRET": {
+            "description": "OAuth Client Secret"
+        }
+    },
+    "credentials": {
+        "fields": {
+            "server": {
+                "label": "Server",
+                "viewClass": "SelectView",
+                "model": [
+                    "https://circuitsandbox.net/rest/v2",
+                    "--- Custom URL"
+                ],
+                "required": true
+            },
+            "otherServer": {
+                "label": "Custom Server URL",
+                "viewClass": "TextFieldView"
+            },
+            "oauth": {
+                "label": "oauth",
+                "viewClass": "OAuthFieldView"
+            }
+        },
+        "oauth2": {
+            "client_id": "{{OAUTH_CLIENT_ID}}",
+            "client_secret": "{{OAUTH_CLIENT_SECRET}}",
+            "auth_uri": "https://circuitsandbox.net/oauth/authorize"
+        }
+    },
+    "triggers": {
+        "startFlow": {
+            "main": "./lib/triggers/startFlow.js",
+            "type": "polling",
+            "title": "Start Flow",
+            "fields": {}
+        }
+    },
+    "actions": {
+        "getConversations": {
+            "main": "./lib/actions/getConversations.js",
+            "title": "Gets a list of conversations",
+            "description": "Gets a list of conversations and communities the authenticated user participates in.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/getConversations.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "getCommunityConversations": {
+            "main": "./lib/actions/getCommunityConversations.js",
+            "title": "Gets a list of communities",
+            "description": "Gets a list of communities. This endpoint can be used to explore the communities the authenticated user could join.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/getCommunityConversations.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "createCommunityConversation": {
+            "main": "./lib/actions/createCommunityConversation.js",
+            "title": "Creates a community conversation",
+            "description": "Creates a community. Communities are open conversations that anyone in a Circuit domain (tenant) can join without having to be added by another user.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/createCommunityConversation.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "updateConversationCommunity": {
+            "main": "./lib/actions/updateConversationCommunity.js",
+            "title": "Updates the information of a community",
+            "description": "Updates the information of the given community.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/updateConversationCommunity.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "joinCommunityConversation": {
+            "main": "./lib/actions/joinCommunityConversation.js",
+            "title": "Adds the authenticated user to a community",
+            "description": "Adds the authenticated user to the given community (i.e., allows the user to join this community). Contrary to the operation of adding a new participant, this operation can only be performed by a user who is not yet a member of the community.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/joinCommunityConversation.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "removeParticipantCommunity": {
+            "main": "./lib/actions/removeParticipantCommunity.js",
+            "title": "Removes participants from a community",
+            "description": "Removes one or more participants from the given community. The last participant of a community cannot be removed. This operation can only be performed by a user who is already a member of the community.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/removeParticipantCommunity.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "addParticipantCommunity": {
+            "main": "./lib/actions/addParticipantCommunity.js",
+            "title": "Adds participants to a community",
+            "description": "Adds one or more participants to the given community. This operation can only be performed by a user who is already a member of the community.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/addParticipantCommunity.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "getDirectConversation": {
+            "main": "./lib/actions/getDirectConversation.js",
+            "title": "Checks for a 1-to-1 conversation",
+            "description": "Checks if a 1-to-1 conversation between the authenticated user and the user with the provided userId exists.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/getDirectConversation.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "createDirectConversation": {
+            "main": "./lib/actions/createDirectConversation.js",
+            "title": "Creates a 1-to-1 conversation",
+            "description": "Creates a 1-to-1 conversation between the authenticated user and the user with the provided userId. In case there is already an existing 1-to-1 conversation between these users, the endpoint returns the existing conversation.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/createDirectConversation.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "getFavoriteConversations": {
+            "main": "./lib/actions/getFavoriteConversations.js",
+            "title": "Gets favorite conversations",
+            "description": "Gets the conversationIds which are marked as favorites.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/getFavoriteConversations.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "createGroupConversation": {
+            "main": "./lib/actions/createGroupConversation.js",
+            "title": "Creates a group conversation",
+            "description": "Creates a group conversation between three or more users. The authenticated user is directly added to this conversation.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/createGroupConversation.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "updateConversationGroup": {
+            "main": "./lib/actions/updateConversationGroup.js",
+            "title": "Updates the information of a group conversation",
+            "description": "Updates the information of the given group conversation.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/updateConversationGroup.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "removeParticipantGroup": {
+            "main": "./lib/actions/removeParticipantGroup.js",
+            "title": "Removes participants from a group conversation",
+            "description": "Removes one or more participants from the given group conversation. The last participant of a group conversation cannot be removed. This operation can only be performed on behalf of a user who is already a member of the conversation.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/removeParticipantGroup.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "addParticipantGroup": {
+            "main": "./lib/actions/addParticipantGroup.js",
+            "title": "Adds participants to a group conversation",
+            "description": "Adds one or more participants to the given group conversation. This operation can only be performed by a user who is already a member of the conversation.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/addParticipantGroup.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "getConversationsByLabel": {
+            "main": "./lib/actions/getConversationsByLabel.js",
+            "title": "Returns conversations with a certain label",
+            "description": "Returns conversations with matching labels and paginated ",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/getConversationsByLabel.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "getFlagItemConv": {
+            "main": "./lib/actions/getFlagItemConv.js",
+            "title": "Gets a list of the flagged messages",
+            "description": "Gets a list of all the messages the authenticated user has flagged. This endpoint should be used carefully in case where the authenticated user has a lot of flagged messages.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/getFlagItemConv.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "getSingleConversationtem": {
+            "main": "./lib/actions/getSingleConversationtem.js",
+            "title": "Returns a text item",
+            "description": "Returns a text item for a given item id",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/getSingleConversationtem.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "moderateConversation": {
+            "main": "./lib/actions/moderateConversation.js",
+            "title": "Set conversation moderated",
+            "description": "Set a conversation in moderatd mode. Moderators can be added and removed",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/moderateConversation.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "resolveInvitationToken": {
+            "main": "./lib/actions/resolveInvitationToken.js",
+            "title": "Resolves an invite token to a conversation",
+            "description": "Resolves an invite token to a conversation",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/resolveInvitationToken.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "searchConversations": {
+            "main": "./lib/actions/searchConversations.js",
+            "title": "Performs a conversation search",
+            "description": "Performs a search for conversation content. A maximum of 100 conversations is returned. If you hit this limit you should refine the search term.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/searchConversations.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "unmoderateConversation": {
+            "main": "./lib/actions/unmoderateConversation.js",
+            "title": "Set conversation unmoderated",
+            "description": "Set a conversation to unmoderatd mode",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/unmoderateConversation.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "getConversationbyId": {
+            "main": "./lib/actions/getConversationbyId.js",
+            "title": "Gets a conversation",
+            "description": "Gets a conversation based on the given ID.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/getConversationbyId.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "getJoinDetails": {
+            "main": "./lib/actions/getJoinDetails.js",
+            "title": "Gets the conference details of a conversation",
+            "description": "Gets the conference details of the given conversation. Conference details include the URL, which is used to join the conference through a web or mobile application, as well as the dial-in phone numbers and conference PIN, which are used to join the conference by phone.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/getJoinDetails.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "deleteFavorite": {
+            "main": "./lib/actions/deleteFavorite.js",
+            "title": "Removes a conversation from favorites",
+            "description": "Removes a conversation from favorites. Favorites can be displayed in a separate side tab inside of the Circuit client to have a better overview of important conversations.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/deleteFavorite.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "addFavorite": {
+            "main": "./lib/actions/addFavorite.js",
+            "title": "Adds a conversation to the favorites",
+            "description": "Adds a conversation to the favorites. Favorites can be displayed in a separate side tab inside of the Circuit client to have a better overview of important conversations.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/addFavorite.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "getConversationItems": {
+            "main": "./lib/actions/getConversationItems.js",
+            "title": "Gets a list of conversation items",
+            "description": "Gets a list of conversation items.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/getConversationItems.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "assignLabel": {
+            "main": "./lib/actions/assignLabel.js",
+            "title": "Adds a label to a conversation",
+            "description": "Adds a label to a conversation, you can search and organize your conversations based on these labels",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/assignLabel.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "unassignLabel": {
+            "main": "./lib/actions/unassignLabel.js",
+            "title": "Removes a label from a conversation",
+            "description": "Removes a label from a conversation, you can search and organize your conversations based on these labels",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/unassignLabel.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "addTextItem": {
+            "main": "./lib/actions/addTextItem.js",
+            "title": "Adds a message to a conversation",
+            "description": "Adds a message to the given conversation. This operation can be only performed on behalf of a user who is already a member of the conversation.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/addTextItem.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "getFlagItem": {
+            "main": "./lib/actions/getFlagItem.js",
+            "title": "Gets a list of the flagged messages of a conversation",
+            "description": "Gets a list of all the flagged messages in the given conversation.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/getFlagItem.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "deleteTextItem": {
+            "main": "./lib/actions/deleteTextItem.js",
+            "title": "Deletes a message from a conversation",
+            "description": "Marks a message in the given conversation as deleted. Deleted messages are still part of the conversation, but their content is no more visible. This operation can only be performed on behalf of the message's creator.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/deleteTextItem.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "addTextItemWithParent": {
+            "main": "./lib/actions/addTextItemWithParent.js",
+            "title": "Adds a message to an item",
+            "description": "Adds a message to the existing item. The added message will be a child item of the message with the given itemId.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/addTextItemWithParent.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "updateTextItem": {
+            "main": "./lib/actions/updateTextItem.js",
+            "title": "Updates a message",
+            "description": "Updates the content or subject of the existing message. Only the creator of the message is allowed to perform this operation.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/updateTextItem.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "unFlagItem": {
+            "main": "./lib/actions/unFlagItem.js",
+            "title": "Removes the flag from a message",
+            "description": "Removes the flag from a given message that is posted to the given conversation.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/unFlagItem.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "flagItem": {
+            "main": "./lib/actions/flagItem.js",
+            "title": "Adds a flag to a message in a conversation",
+            "description": "Adds a flag to the given message in the given conversation.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/flagItem.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "unlikeItem": {
+            "main": "./lib/actions/unlikeItem.js",
+            "title": "Removes a \"like\" from a message",
+            "description": "Removes a \"like\" from the given message in the given conversation",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/unlikeItem.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "likeItem": {
+            "main": "./lib/actions/likeItem.js",
+            "title": "Adds a \"like\" to a message",
+            "description": "Adds a \"like\" to the given message in the given conversation",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/likeItem.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "removeModerators": {
+            "main": "./lib/actions/removeModerators.js",
+            "title": "Remove moderators",
+            "description": "Removes a list of moderators from a conversation",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/removeModerators.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "addModerators": {
+            "main": "./lib/actions/addModerators.js",
+            "title": "Add moderators",
+            "description": "Adds a list of moderators to a conversation",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/addModerators.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "getParticipantsByConvId": {
+            "main": "./lib/actions/getParticipantsByConvId.js",
+            "title": "Performs a list of participants",
+            "description": "Performs a search for participants. The max number of participants is configurable. If more participants are available a search pointer is returned for consecutive calls.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/getParticipantsByConvId.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "getPinnedConversations": {
+            "main": "./lib/actions/getPinnedConversations.js",
+            "title": "Returns pinned topics of a conversation",
+            "description": "Returns pinned topics of a conversation",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/getPinnedConversations.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "unPinAConversation": {
+            "main": "./lib/actions/unPinAConversation.js",
+            "title": "unPinAConversation",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/unPinAConversation.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "pinAConversation": {
+            "main": "./lib/actions/pinAConversation.js",
+            "title": "pinAConversation",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/pinAConversation.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "oAuthGetClientIds": {
+            "main": "./lib/actions/oAuthGetClientIds.js",
+            "title": "Gets a list of client IDs",
+            "description": "Gets a list of the client IDs (applications) that were created for this user.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/oAuthGetClientIds.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "oAuthGetScopeList": {
+            "main": "./lib/actions/oAuthGetScopeList.js",
+            "title": "List of available OAuth scopes",
+            "description": "Gets a list of available OAuth scopes",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/oAuthGetScopeList.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "oAuthValidateAccessToken": {
+            "main": "./lib/actions/oAuthValidateAccessToken.js",
+            "title": "Gets an access token",
+            "description": "Gets the access token for the given token ID.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/oAuthValidateAccessToken.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "getActiveSessions": {
+            "main": "./lib/actions/getActiveSessions.js",
+            "title": "Gets a list of active sessions",
+            "description": "Gets a list of active RTCsessions",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/getActiveSessions.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "searchUser": {
+            "main": "./lib/actions/searchUser.js",
+            "title": "Search for users",
+            "description": "Search for users based on an email address or username",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/searchUser.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "getLabel": {
+            "main": "./lib/actions/getLabel.js",
+            "title": "Returns all user labels",
+            "description": "Returns all labels of the user that were defined either explicit or implicit via assignment to conversations.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/getLabel.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "addLabel": {
+            "main": "./lib/actions/addLabel.js",
+            "title": "Add a user label",
+            "description": "Add a label to the list of user labels",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/addLabel.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "removeLabel": {
+            "main": "./lib/actions/removeLabel.js",
+            "title": "Remove a user label",
+            "description": "Remove a label from the list of user labels",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/removeLabel.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "searchUsersList": {
+            "main": "./lib/actions/searchUsersList.js",
+            "title": "Search multiple users.",
+            "description": "Search multiple users given by id or email address.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/searchUsersList.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "getPresence": {
+            "main": "./lib/actions/getPresence.js",
+            "title": "Gets the presence status",
+            "description": "Gets the presence status of the users whose IDs or email addresses are given.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/getPresence.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "setUserPresence": {
+            "main": "./lib/actions/setUserPresence.js",
+            "title": "Updates the presence status",
+            "description": "Updates the presence status of the authenticated user.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/setUserPresence.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "getProfile": {
+            "main": "./lib/actions/getProfile.js",
+            "title": "Gets the authenticated user's profile information",
+            "description": "Gets the authenticated user's profile information.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/getProfile.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "updateProfile": {
+            "main": "./lib/actions/updateProfile.js",
+            "title": "Updates the user profile",
+            "description": "Updates the user profile of the authenticated user",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/updateProfile.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "getUserById": {
+            "main": "./lib/actions/getUserById.js",
+            "title": "Gets the user's profile information",
+            "description": "Gets the profile information of the user with the given ID.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/getUserById.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "getUserPresence": {
+            "main": "./lib/actions/getUserPresence.js",
+            "title": "Gets the presence status",
+            "description": "Gets the presence status of the users whose ID or email address is given.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/getUserPresence.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "removeWebHooks": {
+            "main": "./lib/actions/removeWebHooks.js",
+            "title": "Removes all webHooks",
+            "description": "Unregisters all webHooks of the authenticated user",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/removeWebHooks.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "getWebHook": {
+            "main": "./lib/actions/getWebHook.js",
+            "title": "Gets a list of webHooks",
+            "description": "Gets the list of webHooks registered for this user or API.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/getWebHook.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "addWebHook": {
+            "main": "./lib/actions/addWebHook.js",
+            "title": "Registers a WebHook",
+            "description": "Registers the webHook with the given filter and callback URL.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/addWebHook.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "createIncomingWebhook": {
+            "main": "./lib/actions/createIncomingWebhook.js",
+            "title": "Create a new webhook for existing conversation.",
+            "description": "Create a new webhook. Conversation must exist and creater has to be participant.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/createIncomingWebhook.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "getIncomingWebhookByUser": {
+            "main": "./lib/actions/getIncomingWebhookByUser.js",
+            "title": "Get all webhooks of a special user.",
+            "description": "Get all webhooks of a special user.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/getIncomingWebhookByUser.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "deleteIncomingWebhook": {
+            "main": "./lib/actions/deleteIncomingWebhook.js",
+            "title": "Delete an existing webhook",
+            "description": "Delete a new webhook. Webhook must exist",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/deleteIncomingWebhook.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "postWebhookAsSlackMessage": {
+            "main": "./lib/actions/postWebhookAsSlackMessage.js",
+            "title": "Post text item for conversation via webhook.",
+            "description": "Post text items to conversations via slack apps.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/postWebhookAsSlackMessage.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "addPresenceWebHook": {
+            "main": "./lib/actions/addPresenceWebHook.js",
+            "title": "Registers Presence WebHook registration",
+            "description": "Registers a webHook that has a presence filter with the given URL and userIds. There is a maximum number of userIds allowed",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/addPresenceWebHook.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "updatePresenceWebHook": {
+            "main": "./lib/actions/updatePresenceWebHook.js",
+            "title": "Updates a Presence WebHook registration",
+            "description": "Updates a registration of a webHook that has a presence filter. The update can be performed either on the URL and/or the userIds. The new userIds, if any, will override any existing userIds.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/updatePresenceWebHook.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "removeWebHook": {
+            "main": "./lib/actions/removeWebHook.js",
+            "title": "Removes a registered webHook",
+            "description": "Unregisters the webHook with the given ID.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/removeWebHook.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "getWebHookById": {
+            "main": "./lib/actions/getWebHookById.js",
+            "title": "Gets a webHook",
+            "description": "Gets the registered webHook with the given ID.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/getWebHookById.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "updateWebHook": {
+            "main": "./lib/actions/updateWebHook.js",
+            "title": "Updates a WebHook registration",
+            "description": "Updates a webHook registration with the given filter and callback URL.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/updateWebHook.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        }
+    }
+}

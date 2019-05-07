@@ -1,0 +1,28 @@
+{
+    "type": "object",
+    "properties": {
+        "id": {
+            "required": true,
+            "type": "string",
+            "maxLength": 2048
+        },
+        "requestBody": {
+            "type": "object",
+            "properties": {
+                "url": {
+                    "description": "WebHook callback URL. Currently only HTTP is supported",
+                    "type": "string",
+                    "maxLength": 2048
+                },
+                "userIds": {
+                    "description": "The IDs of the users to subscribe for their presence",
+                    "type": "array",
+                    "items": {
+                        "maxLength": 6500,
+                        "type": "string"
+                    }
+                }
+            }
+        }
+    }
+}

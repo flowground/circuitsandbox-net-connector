@@ -1,0 +1,26 @@
+{
+    "type": "object",
+    "properties": {
+        "convId": {
+            "required": true,
+            "type": "string",
+            "maxLength": 2048
+        },
+        "requestBody": {
+            "type": "object",
+            "properties": {
+                "moderators": {
+                    "description": "The list of moderator ids to remove",
+                    "type": "array",
+                    "items": {
+                        "maxLength": 6500,
+                        "type": "string"
+                    }
+                }
+            },
+            "required": [
+                "moderators"
+            ]
+        }
+    }
+}

@@ -1,0 +1,30 @@
+{
+    "type": "object",
+    "properties": {
+        "convId": {
+            "required": true,
+            "type": "string",
+            "maxLength": 2048
+        },
+        "itemId": {
+            "required": true,
+            "type": "string",
+            "maxLength": 2048
+        },
+        "requestBody": {
+            "type": "object",
+            "properties": {
+                "itemCreationTime": {
+                    "description": "The time when the item was created",
+                    "type": "string",
+                    "maxLength": 2048
+                },
+                "parentId": {
+                    "description": "The ID of the item's parent",
+                    "type": "string",
+                    "maxLength": 2048
+                }
+            }
+        }
+    }
+}

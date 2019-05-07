@@ -1,0 +1,18 @@
+{
+    "type": "object",
+    "properties": {
+        "convId": {
+            "required": true,
+            "type": "string",
+            "maxLength": 2048
+        },
+        "participants": {
+            "required": true,
+            "type": "array",
+            "items": {
+                "maxLength": 6500,
+                "type": "string"
+            }
+        }
+    }
+}

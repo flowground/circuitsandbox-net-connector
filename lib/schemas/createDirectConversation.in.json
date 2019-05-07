@@ -1,0 +1,18 @@
+{
+    "type": "object",
+    "properties": {
+        "requestBody": {
+            "type": "object",
+            "properties": {
+                "participant": {
+                    "description": "The participant that will be part of this conversation together with the creator, specified by the Circuit user ID or the unique email address",
+                    "type": "string",
+                    "maxLength": 2048
+                }
+            },
+            "required": [
+                "participant"
+            ]
+        }
+    }
+}

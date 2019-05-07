@@ -1,0 +1,10 @@
+{
+    "type": "object",
+    "properties": {
+        "itemId": {
+            "required": true,
+            "type": "string",
+            "maxLength": 2048
+        }
+    }
+}

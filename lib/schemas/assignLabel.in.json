@@ -1,0 +1,23 @@
+{
+    "type": "object",
+    "properties": {
+        "convId": {
+            "required": true,
+            "type": "string",
+            "maxLength": 2048
+        },
+        "requestBody": {
+            "type": "object",
+            "properties": {
+                "label": {
+                    "description": "The actual label ",
+                    "type": "string",
+                    "maxLength": 2048
+                }
+            },
+            "required": [
+                "label"
+            ]
+        }
+    }
+}

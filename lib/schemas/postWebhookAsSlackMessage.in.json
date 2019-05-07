@@ -1,0 +1,23 @@
+{
+    "type": "object",
+    "properties": {
+        "webhookId": {
+            "required": true,
+            "type": "string",
+            "maxLength": 2048
+        },
+        "requestBody": {
+            "properties": {
+                "mrkdwn": {
+                    "description": "Optional field. If false, textitem will not be formatted. Default is true.",
+                    "type": "boolean"
+                },
+                "text": {
+                    "description": "The text which will occur in the conversation. May contain formats like *bold* or _italic_",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        }
+    }
+}

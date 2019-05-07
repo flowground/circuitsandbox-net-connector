@@ -1,0 +1,40 @@
+{
+    "type": "object",
+    "properties": {
+        "requestBody": {
+            "type": "object",
+            "properties": {
+                "firstname": {
+                    "description": "The new firstname of the user",
+                    "type": "string",
+                    "maxLength": 128
+                },
+                "lastname": {
+                    "description": "The new lastname of the user",
+                    "type": "string",
+                    "maxLength": 128
+                },
+                "jobTitle": {
+                    "description": "The new job title of the user",
+                    "type": "string",
+                    "maxLength": 128
+                },
+                "locale": {
+                    "description": "The new locale of the user. One of EN_US, DE_DE, EN_GB, ES_ES, FR_FR, IT_IT, RU_RU, ZH_HANS_CN.",
+                    "type": "string",
+                    "maxLength": 5,
+                    "enum": [
+                        "EN_US",
+                        "DE_DE",
+                        "EN_GB",
+                        "ES_ES",
+                        "FR_FR",
+                        "IT_IT",
+                        "RU_RU",
+                        "ZH_HANS_CN"
+                    ]
+                }
+            }
+        }
+    }
+}

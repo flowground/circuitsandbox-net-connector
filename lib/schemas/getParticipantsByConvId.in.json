@@ -1,0 +1,40 @@
+{
+    "type": "object",
+    "properties": {
+        "convId": {
+            "required": true,
+            "type": "string",
+            "maxLength": 2048
+        },
+        "pageSize": {
+            "required": true,
+            "type": "number",
+            "format": "int32",
+            "minimum": 1,
+            "maximum": 25
+        },
+        "name": {
+            "required": false,
+            "type": "string",
+            "maxLength": 2048
+        },
+        "type": {
+            "required": false,
+            "type": "string",
+            "maxLength": 2048,
+            "enum": [
+                "REGULAR",
+                "MODERATOR",
+                "GUEST",
+                "FORMER",
+                "BOT"
+            ],
+            "default": "REGULAR"
+        },
+        "searchPointer": {
+            "required": false,
+            "type": "string",
+            "maxLength": 2048
+        }
+    }
+}

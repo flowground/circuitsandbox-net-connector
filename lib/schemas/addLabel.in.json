@@ -1,0 +1,18 @@
+{
+    "type": "object",
+    "properties": {
+        "requestBody": {
+            "type": "object",
+            "properties": {
+                "label": {
+                    "description": "The label value to add",
+                    "type": "string",
+                    "maxLength": 2048
+                }
+            },
+            "required": [
+                "label"
+            ]
+        }
+    }
+}

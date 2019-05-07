@@ -1,0 +1,15 @@
+{
+    "type": "object",
+    "properties": {
+        "term": {
+            "required": true,
+            "type": "string",
+            "maxLength": 2048
+        },
+        "includeItemIds": {
+            "required": false,
+            "type": "boolean",
+            "default": false
+        }
+    }
+}

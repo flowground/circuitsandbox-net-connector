@@ -1,0 +1,47 @@
+{
+    "type": "object",
+    "properties": {
+        "sort": {
+            "required": false,
+            "type": "string",
+            "maxLength": 2048,
+            "enum": [
+                "ALPHABETICALLY",
+                "RECENT_ACTIVITY",
+                "POPULARITY"
+            ],
+            "default": "ALPHABETICALLY"
+        },
+        "order": {
+            "required": false,
+            "type": "string",
+            "maxLength": 2048,
+            "enum": [
+                "ASCENDING",
+                "DESCENDING"
+            ],
+            "default": "ASCENDING"
+        },
+        "includeOwn": {
+            "required": false,
+            "type": "boolean",
+            "default": false
+        },
+        "startIndex": {
+            "required": false,
+            "type": "number",
+            "format": "int32",
+            "minimum": 0,
+            "maximum": 255,
+            "default": 0
+        },
+        "results": {
+            "required": false,
+            "type": "number",
+            "format": "int32",
+            "minimum": 1,
+            "maximum": 100,
+            "default": 25
+        }
+    }
+}

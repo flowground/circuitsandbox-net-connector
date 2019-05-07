@@ -1,0 +1,25 @@
+{
+    "type": "object",
+    "properties": {
+        "conversationId": {
+            "required": true,
+            "type": "string",
+            "maxLength": 2048
+        },
+        "name": {
+            "required": false,
+            "type": "string",
+            "maxLength": 2048
+        },
+        "userId": {
+            "required": false,
+            "type": "string",
+            "maxLength": 2048
+        },
+        "description": {
+            "required": false,
+            "type": "string",
+            "maxLength": 2048
+        }
+    }
+}

@@ -1,0 +1,13 @@
+{
+    "type": "object",
+    "properties": {
+        "userIds": {
+            "required": true,
+            "type": "array",
+            "items": {
+                "maxLength": 6500,
+                "type": "string"
+            }
+        }
+    }
+}

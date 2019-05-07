@@ -1,0 +1,28 @@
+{
+    "type": "object",
+    "properties": {
+        "modTime": {
+            "required": false,
+            "type": "string",
+            "format": "date-time"
+        },
+        "direction": {
+            "required": false,
+            "type": "string",
+            "maxLength": 2048,
+            "enum": [
+                "BEFORE",
+                "AFTER"
+            ],
+            "default": "BEFORE"
+        },
+        "results": {
+            "required": false,
+            "type": "number",
+            "format": "int32",
+            "minimum": 1,
+            "maximum": 100,
+            "default": 25
+        }
+    }
+}

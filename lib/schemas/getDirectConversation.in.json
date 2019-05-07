@@ -1,0 +1,10 @@
+{
+    "type": "object",
+    "properties": {
+        "participant": {
+            "required": true,
+            "type": "string",
+            "maxLength": 2048
+        }
+    }
+}

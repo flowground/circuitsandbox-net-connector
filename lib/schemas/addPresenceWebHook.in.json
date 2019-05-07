@@ -1,0 +1,26 @@
+{
+    "type": "object",
+    "properties": {
+        "requestBody": {
+            "type": "object",
+            "properties": {
+                "url": {
+                    "description": "WebHook callback URL. Currently only HTTP is supported",
+                    "type": "string",
+                    "maxLength": 2048
+                },
+                "userIds": {
+                    "description": "not available",
+                    "type": "array",
+                    "items": {
+                        "maxLength": 6500,
+                        "type": "string"
+                    }
+                }
+            },
+            "required": [
+                "url"
+            ]
+        }
+    }
+}

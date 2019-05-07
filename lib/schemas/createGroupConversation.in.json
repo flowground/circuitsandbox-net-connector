@@ -1,0 +1,26 @@
+{
+    "type": "object",
+    "properties": {
+        "requestBody": {
+            "type": "object",
+            "properties": {
+                "participants": {
+                    "description": "A list of participants that will be part of this conversation, specified by the Circuit user ID or the unique email address. At least one participant needs to be added",
+                    "type": "array",
+                    "items": {
+                        "maxLength": 2048,
+                        "type": "string"
+                    }
+                },
+                "topic": {
+                    "description": "An optional topic of the conversation. If not set the Circuit client will render the names of the participants as topic of the conversation (the first 4 names will be used)",
+                    "type": "string",
+                    "maxLength": 2048
+                }
+            },
+            "required": [
+                "participants"
+            ]
+        }
+    }
+}

@@ -1,0 +1,33 @@
+{
+    "type": "object",
+    "properties": {
+        "requestBody": {
+            "type": "object",
+            "properties": {
+                "state": {
+                    "description": "The user's presence.",
+                    "type": "string",
+                    "maxLength": 2048
+                },
+                "dndUntil": {
+                    "description": "Timestamp until the DND state of the user is active. This field is mandatory when the state is set to DND.",
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "clearDND": {
+                    "description": "not available",
+                    "type": "boolean",
+                    "default": false
+                },
+                "statusMessage": {
+                    "description": "An optional status message that is displayed instead of the location",
+                    "type": "string",
+                    "maxLength": 2048
+                }
+            },
+            "required": [
+                "state"
+            ]
+        }
+    }
+}

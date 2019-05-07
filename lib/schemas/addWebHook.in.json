@@ -1,0 +1,36 @@
+{
+    "type": "object",
+    "properties": {
+        "requestBody": {
+            "type": "object",
+            "properties": {
+                "url": {
+                    "description": "WebHook callback URL. Currently only HTTP is supported",
+                    "type": "string",
+                    "maxLength": 2048
+                },
+                "filter": {
+                    "description": "A filter for WebHooks that checks for a list of configured events. This filter will use a regular expression to determine if it is interested in the events or not. The event itself is converted into a string of format AREA.EVENT. Examples: CONVERSATION.CREATE / USER.UPDATE",
+                    "type": "array",
+                    "items": {
+                        "enum": [
+                            "CONVERSATION.CREATE",
+                            "CONVERSATION.UPDATE",
+                            "CONVERSATION.ADD_ITEM",
+                            "CONVERSATION.UPDATE_ITEM",
+                            "USER.INCOMING_CALL",
+                            "USER.USER_UPDATED",
+                            "USER.USER_SETTING_UPDATED",
+                            "USER.SUBMIT_FORM_DATA"
+                        ],
+                        "maxLength": 2048,
+                        "type": "string"
+                    }
+                }
+            },
+            "required": [
+                "url"
+            ]
+        }
+    }
+}

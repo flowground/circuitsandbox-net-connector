@@ -1,0 +1,20 @@
+{
+    "type": "object",
+    "properties": {
+        "convId": {
+            "required": true,
+            "type": "string",
+            "maxLength": 2048
+        },
+        "requestBody": {
+            "type": "object",
+            "properties": {
+                "topic": {
+                    "description": "An optional topic of the conversation. If not set the Circuit client will render the names of the participants as topic of the conversation (the first 4 names will be used)",
+                    "type": "string",
+                    "maxLength": 2048
+                }
+            }
+        }
+    }
+}
